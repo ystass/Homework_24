@@ -2,7 +2,7 @@ from django.db import models
 
 from config import settings
 
-NULLABLE = {'null': True, 'blank': True}
+NULLABLE = {"null": True, "blank": True}
 
 
 class Course(models.Model):
@@ -10,9 +10,16 @@ class Course(models.Model):
 
     description = models.TextField(verbose_name="Описание", **NULLABLE)
 
-    preview = models.ImageField(upload_to="materials/courses", verbose_name="Превью", **NULLABLE)
+    preview = models.ImageField(
+        upload_to="materials/courses", verbose_name="Превью", **NULLABLE
+    )
 
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Создатель курса", **NULLABLE)
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="Создатель курса",
+        **NULLABLE
+    )
 
     def __str__(self):
         return self.title
@@ -23,7 +30,9 @@ class Course(models.Model):
 
 
 class Lesson(models.Model):
-    title = models.CharField( max_length=100, verbose_name="Название", help_text="Укажите название урока")
+    title = models.CharField(
+        max_length=100, verbose_name="Название", help_text="Укажите название урока"
+    )
 
     description = models.TextField(verbose_name="Описание", **NULLABLE)
 
@@ -31,9 +40,16 @@ class Lesson(models.Model):
 
     url = models.URLField(verbose_name="Ccылка на видео", **NULLABLE)
 
-    course = models.ForeignKey(Course, on_delete=models.SET_NULL, verbose_name="Курс", **NULLABLE)
+    course = models.ForeignKey(
+        Course, on_delete=models.SET_NULL, verbose_name="Курс", **NULLABLE
+    )
 
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Создатель урока", **NULLABLE)
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="Создатель урока",
+        **NULLABLE
+    )
 
     def __str__(self):
         return self.title

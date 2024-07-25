@@ -14,7 +14,7 @@ class LessonSerializer(ModelSerializer):
 
 class CourseSerializer(ModelSerializer):
     lessons_count = SerializerMethodField()
-    #lessons = LessonSerializer(source="lesson_set", **NULLABLE)
+    lessons = LessonSerializer(source="lesson_set", **NULLABLE)
 
     class Meta:
         model = Course

@@ -22,5 +22,29 @@
       "payment_amount": 1000,
       "payment_method": "ONLINE"
     }
+  },
+  {
+    "model": "users.payments",
+    "pk": 3,
+    "fields": {
+      "user": 4,
+      "date": "2024-09-13",
+      "course": 3,
+      "lesson": 3,
+      "payment_amount": 100,
+      "payment_method": "CASH"
+    }
+  },
+  {
+    "model": "users.payments",
+    "pk": 4,
+    "fields": {
+      "user": 1,
+      "date": "2024-09-13",
+      "course": 1,
+      "lesson": 1,
+      "payment_amount": 200,
+      "payment_method": "ONLINE"
+    }
   }
 ]

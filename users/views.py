@@ -1,9 +1,17 @@
 from rest_framework.generics import ListAPIView
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import OrderingFilter, SearchFilter
+from rest_framework.permissions import AllowAny
+from rest_framework.viewsets import ModelViewSet
 
-from users.models import Payments
-from users.serialiser import PaymentsSerializer
+from users.models import Payments, User
+from users.serialiser import PaymentsSerializer, UserSerializer
+
+
+class UserViewSet(ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (AllowAny,)
 
 
 class PaymentsListAPIView(ListAPIView):

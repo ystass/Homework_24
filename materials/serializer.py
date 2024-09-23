@@ -2,6 +2,7 @@ from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import ModelSerializer
 
 from materials.models import Course, Lesson
+from materials.validators import UrlValidator
 
 NULLABLE = {"null": True, "blank": True}
 
@@ -10,6 +11,7 @@ class LessonSerializer(ModelSerializer):
     class Meta:
         model = Lesson
         fields = "__all__"
+        validators = [UrlValidator(field="url")]
 
 
 class CourseSerializer(ModelSerializer):

@@ -64,7 +64,7 @@ class LessonDestroyAPIView(DestroyAPIView):
     permission_classes = [IsAuthenticated, IsOwner]
 
 
-class SubscriptionViewSet(APIView):
+class SubscriptionAPIView(APIView):
     serializer_class = SubscriptionSerializer
 
     def post(self, *args, **kwargs):

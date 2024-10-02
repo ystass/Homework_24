@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "django_filters",
     "rest_framework_simplejwt",
     "drf_yasg",
+    "django_celery_beat",
 
     "users",
     "materials",
@@ -167,6 +168,17 @@ CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL")  # Например, Redis, �
 
 # URL-адрес брокера результатов, также Redis
 CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND")
+
+
+# Настройки для Celery Beat
+CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+
+CELERY_BEAT_SCHEDULE = {
+    "check_last_login": {
+        "task": "materials.tasks.check_last_login",  # Путь к задаче
+        "schedule": timedelta(weeks=4),  # Расписание выполнения задачи
+    }
+}
 
 EMAIL_HOST = os.getenv("EMAIL_HOST")
 EMAIL_PORT = os.getenv("EMAIL_PORT")

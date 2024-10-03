@@ -14,9 +14,12 @@ def update_notification(course_pk):
     """Отправка сообщения об обновлении курса по подписке"""
 
     course = Course.objects.filter(pk=course_pk).first()
+    print(course)
     users = User.objects.all()
+    print(users)
     for user in users:
         subscription = Subscription.objects.filter(course=course_pk, user=user.pk).first()
+        print(subscription)
         if subscription:
             send_mail(
                 subject=f'Обновление курса "{course}"',

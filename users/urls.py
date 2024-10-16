@@ -16,7 +16,7 @@ urlpatterns = [
     path('payments/create/', PaymentsCreateAPIView.as_view(), name='create-payment'),
     path(
         "login/",
-        TokenObtainPairView.as_view(),
+        TokenObtainPairView.as_view(permission_classes=(AllowAny,)),
         name="login",
     ),
     path(

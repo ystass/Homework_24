@@ -1,7 +1,7 @@
 Это DRF проект (Homework_24).
 
 Запуск проекта с помощью команд
- -docker-compose build
+ -docker-compose build и команды
  -docker-compose up
 
 Также это можно сделать одной командой
